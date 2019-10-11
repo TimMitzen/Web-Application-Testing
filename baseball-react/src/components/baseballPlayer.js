@@ -12,7 +12,7 @@ const BaseBall = () => {
     strike === 2 &&
       setStrike(
         0,
-        alert("your out"),
+        alert("Your out"),
         setOut(out + 1),
         out === 2 && setOut(0, alert("next team up"), reset()),
         out === 2 && setScore(0)
@@ -21,7 +21,7 @@ const BaseBall = () => {
   const balls = () => {
     setBall(ball + 1);
     ball === 3 &&
-      setBall(0,  setHit(hit + 1), setStrike(0));
+      setBall(0,  setHit(hit + 1), setStrike(0),alert('Take your base'));
       hit === 3 && ball === 3 && setScore(score + 1, setHit(0));  
       // hit === 3 && ball === 3 ; 
       // hit === 3 && setScore(score + 1)
@@ -54,12 +54,12 @@ const BaseBall = () => {
 
   return (
     <div className="batter">
-      <p className="strikes">Strikes {strike}</p>
-      <button className="strikeButton" onClick={strikes}>
+      <p data-testid='strike' className="strikes">Strikes {strike}</p>
+      <button data-testid='strike-btn' className="strikeButton" onClick={strikes}>
         Strike
       </button>
-      <p className="balls">Balls {ball}</p>
-      <button className="ballButton" onClick={balls}>
+      <p data-testid="balls" className="balls">Balls {ball}</p>
+      <button data-testid="ball-btn" className="ballButton" onClick={balls}>
         Ball
       </button>
       <p className="hits">Hits {hit}</p>
@@ -69,7 +69,7 @@ const BaseBall = () => {
 
       <p className="outs"> Outs {out}</p>
       <button className="foul" onClick={fouls}>
-        Foul{" "}
+        Foul
       </button>
       <p className="Score">Score {score}</p>
       <button className="reset" onClick={() => reset()}>
