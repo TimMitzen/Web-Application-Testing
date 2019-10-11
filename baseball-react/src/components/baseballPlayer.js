@@ -21,9 +21,10 @@ const BaseBall = () => {
   const balls = () => {
     setBall(ball + 1);
     ball === 3 &&
-      setBall(0, alert("Take your base"), setHit(hit + 1), setStrike(0));
-      hit === 4 && setHit(0);
-      hit === 3 && setScore(score + 1)
+      setBall(0,  setHit(hit + 1), setStrike(0));
+      hit === 3 && ball === 3 && setScore(score + 1, setHit(0));  
+      // hit === 3 && ball === 3 ; 
+      // hit === 3 && setScore(score + 1)
   };
   const hits = () => {
     setHit(hit + 1);
@@ -35,7 +36,7 @@ const BaseBall = () => {
   const fouls = () => {
     setFoul(foul + 1);
     foul === 2 && setStrike(2);
-    foul === 3 && setStrike(2);
+    foul > 2 && setStrike(2);
   };
 
   const reset = () => {
